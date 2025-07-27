@@ -33,7 +33,7 @@ public class ProductRouter {
                         description = "Retrieve a list of all available products.",
                         responses = {
                                 @ApiResponse(responseCode = "200", description = "Successfully retrieved list",
-                                        content = @Content(schema = @Schema(implementation = Product.class)))
+                                        content = @Content(schema = @Schema(implementation = ProductResponseDTO.class)))
                         }
                 )
         ),
@@ -50,7 +50,7 @@ public class ProductRouter {
                         },
                         responses = {
                                 @ApiResponse(responseCode = "200", description = "Successfully retrieved product",
-                                        content = @Content(schema = @Schema(implementation = Product.class))),
+                                        content = @Content(schema = @Schema(implementation = ProductResponseDTO.class))),
                                 @ApiResponse(responseCode = "404", description = "Product not found")
                         }
                 )
@@ -67,7 +67,7 @@ public class ProductRouter {
                                 content = @Content(schema = @Schema(implementation = CreateProductRequest.class))),
                         responses = {
                                 @ApiResponse(responseCode = "201", description = "Product created successfully",
-                                        content = @Content(schema = @Schema(implementation = Product.class))),
+                                        content = @Content(schema = @Schema(implementation = ProductResponseDTO.class))),
                                 @ApiResponse(responseCode = "400", description = "Invalid input")
                         }
                 )
@@ -84,10 +84,10 @@ public class ProductRouter {
                                 @Parameter(in = ParameterIn.PATH, name = "id", description = "ID of the product to update.", required = true)
                         },
                         requestBody = @RequestBody(description = "Updated product object", required = true,
-                                content = @Content(schema = @Schema(implementation = Product.class))),
+                                content = @Content(schema = @Schema(implementation = CreateProductRequest.class))),
                         responses = {
                                 @ApiResponse(responseCode = "200", description = "Product updated successfully",
-                                        content = @Content(schema = @Schema(implementation = Product.class))),
+                                        content = @Content(schema = @Schema(implementation = ProductResponseDTO.class))),
                                 @ApiResponse(responseCode = "404", description = "Product not found"),
                                 @ApiResponse(responseCode = "400", description = "Invalid input")
                         }
