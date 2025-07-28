@@ -111,6 +111,7 @@ public class ProductRouter {
                 )
         )
     })
+
     @Bean
     public RouterFunction<ServerResponse> productRoutes(ProductHandler productHandler) {
         return route(GET("/api/products").and(accept(MediaType.APPLICATION_JSON)), productHandler::getAllProducts)
